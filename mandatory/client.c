@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 13:10:35 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:00:04 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ int main(int argc, char const *argv[])
     int i;
     int j;
 
-    if (argc != 3)
-    {
-        write(1, "Error\n", 6);
-        return (0);
-    }
+    if (argc != 3) 
+        return (write(2, "Error\n", 6), 0);
     pid = ft_atoi(argv[1]);
-    i = 0;
-    while (argv[2][i])
+    if (pid == -33)
+        return (write(2, "Error\n", 6), 0);
+    i = -1;
+    while (argv[2][++i])
     {
         j = 0;
         while (j < 8)
@@ -37,7 +36,6 @@ int main(int argc, char const *argv[])
             j++;
             usleep(100);
         }
-        i++;
     }
     j = 0;
     while (j < 8)
@@ -46,5 +44,4 @@ int main(int argc, char const *argv[])
         j++;
         usleep(100);
     }
-    return 0;
 }

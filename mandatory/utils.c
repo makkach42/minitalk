@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:19:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 12:22:10 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:57:48 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static int	check(int sign)
 {
 	if (sign > 0)
-		return (-1);
+		return (-33);
 	else
-		return (0);
+		return (-33);
 }
 
 int	ft_atoi(const char *str)
