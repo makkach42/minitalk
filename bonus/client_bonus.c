@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 12:19:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 14:17:17 by makkach          ###   ########.fr       */
+/*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
+/*   Updated: 2025/03/05 15:08:15 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static int	check(int sign)
 {
@@ -20,7 +20,7 @@ static int	check(int sign)
 		return (-33);
 }
 
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	int		sign;
 	long	number;
@@ -46,4 +46,43 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)number * sign);
+}
+
+static void	sending_signal(const char **argv, int *i, int *j, int *pid)
+{
+	while (argv[2][(*i)])
+	{
+		*j = 0;
+		while (*j < 8)
+		{
+			if (argv[2][*i] & 1 << *j)
+				kill(*pid, SIGUSR1);
+			else
+				kill(*pid, SIGUSR2);
+			(*j)++;
+			usleep(800);
+		}
+		(*i)++;
+	}
+}
+
+int	main(int argc, char const *argv[])
+{
+	int	pid;
+	int	i;
+	int	j;
+
+	if (argc != 3)
+		return (write(2, "Error\n", 6), 0);
+	pid = ft_atoi(argv[1]);
+	if (pid < 100 || pid > MAX_PID)
+		return (write(2, "Error\n", 6), 0);
+	i = 0;
+	sending_signal(argv, &i, &j, &pid);
+	j = 0;
+	while (j < 8)
+	{
+		kill(pid, SIGUSR2);
+		j++;
+	}
 }
