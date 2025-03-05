@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 15:14:21 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:59:18 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ static void	sending_signal(const char **argv, int *i, int *j, int *pid)
 		}
 		(*i)++;
 	}
+	*j = 0;
+	while (*j < 8)
+	{
+		kill(*pid, SIGUSR2);
+		(*j)++;
+		usleep(800);
+	}
 }
 
 int	main(int argc, char const *argv[])
@@ -79,10 +86,4 @@ int	main(int argc, char const *argv[])
 		return (write(2, "Error\n", 6), 0);
 	i = 0;
 	sending_signal(argv, &i, &j, &pid);
-	j = 0;
-	while (j < 8)
-	{
-		kill(pid, SIGUSR2);
-		j++;
-	}
 }
