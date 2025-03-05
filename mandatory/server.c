@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 14:18:49 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:44:46 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_putnbr(int n)
 
 void	signal_handler(int signal)
 {
-	static int	current_char = 0;
-	static int	bit_count = 0;
-	static int	is_null_received = 0;
+	static int	current_char;
+	static int	bit_count;
+	static int	is_null_received;
 
 	if (signal == SIGUSR1)
 		current_char |= (1 << bit_count);

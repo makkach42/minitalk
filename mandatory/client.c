@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 14:35:08 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:58:29 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sending_signal(const char **argv, int *i, int *j, int *pid)
 			else
 				kill(*pid, SIGUSR2);
 			(*j)++;
-			usleep(100);
+			usleep(800);
 		}
 		(*i)++;
 	}
@@ -39,7 +39,7 @@ int	main(int argc, char const *argv[])
 	if (argc != 3)
 		return (write(2, "Error\n", 6), 0);
 	pid = ft_atoi(argv[1]);
-	if (pid < 100 || pid > 99998)
+	if (pid < 100 || pid > MAX_PID)
 		return (write(2, "Error\n", 6), 0);
 	i = 0;
 	sending_signal(argv, &i, &j, &pid);
@@ -48,6 +48,5 @@ int	main(int argc, char const *argv[])
 	{
 		kill(pid, SIGUSR2);
 		j++;
-		usleep(100);
 	}
 }

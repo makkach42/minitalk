@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:31:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 14:42:39 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:58:35 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <signal.h>
 # include <unistd.h>
+
+# define MAX_PID 99998
 
 int ft_atoi(const char *str);
 
