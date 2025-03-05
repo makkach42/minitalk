@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:19:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 13:57:48 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:03:14 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (number > (((9223372036854775807) - (str[i] - '0')) / 10))
+		if (number > (((99998) - (str[i] - '0')) / 10))
 			return (check(sign));
 		number = number * 10 + (str[i] - '0');
 		i++;

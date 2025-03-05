@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 14:00:04 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:15:13 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
     if (argc != 3) 
         return (write(2, "Error\n", 6), 0);
     pid = ft_atoi(argv[1]);
-    if (pid == -33)
+    if (pid < 100 || pid > 99998)
         return (write(2, "Error\n", 6), 0);
     i = -1;
     while (argv[2][++i])
