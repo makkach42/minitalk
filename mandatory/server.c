@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 16:57:02 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:02:39 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,27 @@ void	ft_putnbr(int n)
 	}
 }
 
-void	signal_handler(int signal)
+void	signal_handler(int signal, siginfo_t *info, void *v)
 {
 	static int	current_char;
 	static int	bit_count;
-	static int	is_null_received;
+	static int	client_pid;
 
+	(void)v;
+	if (client_pid == 0)
+		client_pid = info->si_pid;
+	if (client_pid != info->si_pid)
+	{
+		client_pid = 0;
+		current_char = 0;
+		bit_count = 0;
+	}
 	if (signal == SIGUSR1)
 		current_char |= (1 << bit_count);
 	bit_count++;
 	if (bit_count == 8)
 	{
-		if (is_null_received && current_char != '\0')
-			is_null_received = 0;
-		if (current_char == '\0')
-		{
-			write(1, "\n", 1);
-			is_null_received = 1;
-		}
-		else if (!is_null_received)
+		if (current_char >= 0 && current_char <= 127)
 			write(1, &current_char, 1);
 		current_char = 0;
 		bit_count = 0;
@@ -60,10 +62,14 @@ void	signal_handler(int signal)
 
 int	main(void)
 {
+	struct sigaction	sa;
+
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	sa.sa_sigaction = signal_handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (42)
 	{
 		pause();

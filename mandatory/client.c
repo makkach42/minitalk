@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 16:59:18 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:06:05 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,42 +48,36 @@ static int	ft_atoi(const char *str)
 	return ((int)number * sign);
 }
 
-static void	sending_signal(const char **argv, int *i, int *j, int *pid)
+static void	sending_signal(char argv, int pid)
 {
-	while (argv[2][(*i)])
+	int j;
+
+	j = 0;
+	while (j < 8)
 	{
-		*j = 0;
-		while (*j < 8)
-		{
-			if (argv[2][*i] & 1 << *j)
-				kill(*pid, SIGUSR1);
-			else
-				kill(*pid, SIGUSR2);
-			(*j)++;
-			usleep(800);
-		}
-		(*i)++;
-	}
-	*j = 0;
-	while (*j < 8)
-	{
-		kill(*pid, SIGUSR2);
-		(*j)++;
+		if (argv & 1 << j)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		(j)++;
 		usleep(800);
 	}
 }
 
-int	main(int argc, char const *argv[])
+int	main(int argc, char *argv[])// check empty //dolars //letters in process id
 {
 	int	pid;
 	int	i;
-	int	j;
 
+	i = 0;
 	if (argc != 3)
 		return (write(2, "Error\n", 6), 0);
 	pid = ft_atoi(argv[1]);
-	if (pid < 100 || pid > MAX_PID)
+ 	if (pid < 100 || pid > MAX_PID)
 		return (write(2, "Error\n", 6), 0);
-	i = 0;
-	sending_signal(argv, &i, &j, &pid);
+	while (argv[2][i])
+	{
+		sending_signal(argv[2][i], pid);
+		i++;
+	}
 }

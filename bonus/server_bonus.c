@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 16:16:00 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 22:56:48 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 	static pid_t	client_pid;
 
 	(void)context;
-	if (client_pid == 0 || client_pid != info->si_pid)
-	{
+	if (client_pid == 0)
 		client_pid = info->si_pid;
+	if (client_pid != info->si_pid)
+	{
+		client_pid = 0;
 		current_char = 0;
 		bit_count = 0;
 	}

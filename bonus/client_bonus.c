@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 16:10:03 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:06:22 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	signal_handler(int signal)
 	}
 }
 
-int	main(int argc, char const *argv[])
+int	main(int argc, char const *argv[])// check empty //dolars //letters in process id
 {
 	int	pid;
 	int	i;
