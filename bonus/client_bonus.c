@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 23:21:56 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:25:41 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	sending_signal(char argv, int pid)
 		else
 			kill(pid, SIGUSR2);
 		(j)++;
-		usleep(800);
+		usleep(400);
 	}
 
 }
@@ -74,7 +74,7 @@ void	signal_handler(int signal)
 	}
 }
 
-int	main(int argc, char const *argv[])// check empty //dolars(special characters) //letters in process id
+int	main(int argc, char const *argv[])// check empty //dolars(special characters) //letters in process id //unicode
 {
 	int	pid;
 	int	i;
@@ -97,6 +97,6 @@ int	main(int argc, char const *argv[])// check empty //dolars(special characters
 	{
 		kill(pid, SIGUSR2);
 		i++;
-		usleep(800);
+		usleep(400);
 	}
 }

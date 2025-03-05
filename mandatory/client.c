@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 23:06:05 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:25:18 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	sending_signal(char argv, int pid)
 	}
 }
 
-int	main(int argc, char *argv[])// check empty //dolars //letters in process id
+int	main(int argc, char *argv[])// check empty //dolars(special characters) //letters in process id 
 {
 	int	pid;
 	int	i;
