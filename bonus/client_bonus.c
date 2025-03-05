@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 23:06:22 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:21:56 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,47 +48,36 @@ static int	ft_atoi(const char *str)
 	return ((int)number * sign);
 }
 
-static void	sending_signal(const char **argv, int *i, int *j, int *pid)
+static void	sending_signal(char argv, int pid)
 {
-	while (argv[2][(*i)])
+	int j;
+
+	j = 0;
+	while (j < 8)
 	{
-		*j = 0;
-		while (*j < 8)
-		{
-			if (argv[2][*i] & (1 << *j))
-				kill(*pid, SIGUSR1);
-			else
-				kill(*pid, SIGUSR2);
-			(*j)++;
-			usleep(1000);
-		}
-		(*i)++;
+		if (argv & 1 << j)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		(j)++;
+		usleep(800);
 	}
-	*j = 0;
-	while (*j < 8)
-	{
-		kill(*pid, SIGUSR2);
-		usleep(1000);
-		(*j)++;
-	}
+
 }
 
 void	signal_handler(int signal)
 {
-	if (signal == SIGUSR2)
-		write(1, ".", 1);
-	else if (signal == SIGUSR1)
+	if (signal == SIGUSR1)
 	{
-		write(1, "\nComplete\n", 10);
+		write(1, "Complete\n", 9);
 		exit(0);
 	}
 }
 
-int	main(int argc, char const *argv[])// check empty //dolars //letters in process id
+int	main(int argc, char const *argv[])// check empty //dolars(special characters) //letters in process id
 {
 	int	pid;
 	int	i;
-	int	j;
 
 	if (argc != 3)
 		return (write(2, "Error\n", 6), 0);
@@ -98,5 +87,16 @@ int	main(int argc, char const *argv[])// check empty //dolars //letters in proce
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 	i = 0;
-	sending_signal(argv, &i, &j, &pid);
+	while (argv[2][i])
+	{
+		sending_signal(argv[2][i], pid);
+		i++;
+	}
+	i = 0;
+	while (i < 8)
+	{
+		kill(pid, SIGUSR2);
+		i++;
+		usleep(800);
+	}
 }

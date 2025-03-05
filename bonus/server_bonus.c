@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 22:56:48 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:21:09 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 	if (bit_count == 8)
 	{
 		if (current_char == '\0')
-			(write(1, "\n", 1), kill(client_pid, SIGUSR1));
+			(kill(client_pid, SIGUSR1));
 		else
-			(write(1, &current_char, 1), kill(client_pid, SIGUSR2));
+			(write(1, &current_char, 1));
 		current_char = 0;
 		bit_count = 0;
 	}
