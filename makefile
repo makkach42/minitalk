@@ -1,16 +1,16 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = client.c utils.c
-SRC2 = server.c utils.c
+SRC = mandatory/client.c mandatory/utils.c
+SRC2 = mandatory/server.c
 OBJ = $(SRC:.c=.o)
 OBJ2 = $(SRC2:.c=.o)
 NAME = client
 NAME2 = server
 RM = rm -f
 all: $(NAME) $(NAME2)
-$(NAME): $(OBJ) minitalk.h
+$(NAME): $(OBJ) mandatory/minitalk.h
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-$(NAME2): $(OBJ2) minitalk.h
+$(NAME2): $(OBJ2) mandatory/minitalk.h
 	$(CC) $(CFLAGS) $(SRC2) -o $(NAME2)
 clean:
 	$(RM) $(OBJ) $(OBJ2)
