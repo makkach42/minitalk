@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 16:08:25 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:16:00 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_putnbr(int n)
 
 void	signal_handler(int signal, siginfo_t *info, void *context)
 {
-	static int	current_char;
-	static int	bit_count;
+	static int		current_char;
+	static int		bit_count;
 	static pid_t	client_pid;
 
 	(void)context;
@@ -52,15 +52,9 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 	if (bit_count == 8)
 	{
 		if (current_char == '\0')
-		{
-			write(1, "\n", 1);
-			kill(client_pid, SIGUSR1);
-		}
+			(write(1, "\n", 1), kill(client_pid, SIGUSR1));
 		else
-		{
-			write(1, &current_char, 1);
-			kill(client_pid, SIGUSR2);
-		}
+			(write(1, &current_char, 1), kill(client_pid, SIGUSR2));
 		current_char = 0;
 		bit_count = 0;
 	}
@@ -68,7 +62,7 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 
 int	main(void)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
 
 	ft_putnbr(getpid());
 	write(1, "\n", 1);

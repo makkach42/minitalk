@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 16:08:34 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:10:03 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static void	sending_signal(const char **argv, int *i, int *j, int *pid)
 		(*j)++;
 	}
 }
+
 void	signal_handler(int signal)
 {
 	if (signal == SIGUSR2)
@@ -81,7 +82,6 @@ void	signal_handler(int signal)
 		write(1, "\nComplete\n", 10);
 		exit(0);
 	}
-
 }
 
 int	main(int argc, char const *argv[])
