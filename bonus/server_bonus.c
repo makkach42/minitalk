@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 13:31:22 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 13:37:31 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 		client_pid = info->si_pid;
 	if (client_pid != info->si_pid)
 		(reset_state(&client_pid, buffer, &bit_count,
-				&byte_index), expected_bytes = 1);
+				&byte_index), expected_bytes = 0);
 	if (signal == SIGUSR1)
 		buffer[byte_index] |= (1 << (bit_count % 8));
 	bit_count++;
