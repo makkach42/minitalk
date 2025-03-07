@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 14:17:02 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 20:30:28 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	sending_signal(char argv, int pid)
 	}
 }
 
-int	pid_check(char *str)
+static int	pid_check(char *str)
 {
 	int	i;
 

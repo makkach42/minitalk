@@ -6,13 +6,13 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 23:02:39 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 20:30:49 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_putnbr(int n)
+static void	ft_putnbr(int n)
 {
 	char	c;
 
@@ -33,7 +33,7 @@ void	ft_putnbr(int n)
 	}
 }
 
-void	signal_handler(int signal, siginfo_t *info, void *v)
+static void	signal_handler(int signal, siginfo_t *info, void *v)
 {
 	static int	current_char;
 	static int	bit_count;

@@ -6,13 +6,13 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 13:37:31 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 20:30:10 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-void	ft_putnbr(int n)
+static void	ft_putnbr(int n)
 {
 	char	c;
 
@@ -33,7 +33,7 @@ void	ft_putnbr(int n)
 	}
 }
 
-int	get_utf8_bytes(unsigned char first_byte)
+static int	get_utf8_bytes(unsigned char first_byte)
 {
 	if ((first_byte & 0x80) == 0)
 		return (1);
@@ -46,7 +46,7 @@ int	get_utf8_bytes(unsigned char first_byte)
 	return (1);
 }
 
-void	reset_state(pid_t *client_pid, unsigned char *buffer, int *bit_count,
+static void	reset_state(pid_t *client_pid, unsigned char *buffer, int *bit_count,
 					int *byte_index)
 {
 	*client_pid = 0;
@@ -58,7 +58,7 @@ void	reset_state(pid_t *client_pid, unsigned char *buffer, int *bit_count,
 	buffer[3] = 0;
 }
 
-void	signal_handler(int signal, siginfo_t *info, void *context)
+static void	signal_handler(int signal, siginfo_t *info, void *context)
 {
 	static unsigned char	buffer[4];
 	static int				bit_count;
