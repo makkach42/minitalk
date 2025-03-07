@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/05 23:25:41 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 13:21:25 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_atoi(const char *str)
 
 static void	sending_signal(char argv, int pid)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (j < 8)
@@ -62,7 +62,6 @@ static void	sending_signal(char argv, int pid)
 		(j)++;
 		usleep(400);
 	}
-
 }
 
 void	signal_handler(int signal)
@@ -74,7 +73,7 @@ void	signal_handler(int signal)
 	}
 }
 
-int	main(int argc, char const *argv[])// check empty //dolars(special characters) //letters in process id //unicode
+int	main(int argc, char const *argv[])//check empty //letters in process id
 {
 	int	pid;
 	int	i;

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 17:31:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 13:33:31 by makkach          ###   ########.fr       */
+/*   Created: 2025/03/07 13:22:22 by makkach           #+#    #+#             */
+/*   Updated: 2025/03/07 13:33:27 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_BONUS_H
-# define MINITALK_BONUS_H
+#include "minitalk_bonus.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-# define MAX_PID 99998
-
-void	signal_handler_helper(unsigned char *buffer,
-			pid_t client_pid, int expected_bytes, int bit_count);
-
-#endif
+void	signal_handler_helper(unsigned char *buffer, pid_t client_pid,
+		int expected_bytes, int bit_count)
+{
+	if (buffer[0] == 0)
+	{
+		write(1, "\n", 1);
+		kill(client_pid, SIGUSR1);
+	}
+	else
+		write(1, buffer, expected_bytes);
+	bit_count = 0;
+	expected_bytes = 1;
+	buffer[0] = 0;
+	buffer[1] = 0;
+	buffer[2] = 0;
+	buffer[3] = 0;
+}
