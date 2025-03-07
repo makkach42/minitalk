@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 13:21:25 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:17:02 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,35 @@ static void	sending_signal(char argv, int pid)
 	}
 }
 
-void	signal_handler(int signal)
+int	pid_check(char *str)
 {
-	if (signal == SIGUSR1)
-	{
-		write(1, "Complete\n", 9);
-		exit(0);
-	}
+	int	i;
+
+	i = 0;
+	if (!str || !*str)
+		return (1);
+	while (str[i] == 32)
+		i++;
+	if (str[i] == '\0')
+		return (1);
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	while (str[i] == 32)
+		i++;
+	if (str[i] != '\0')
+		return (1);
+	return (0);
 }
 
-int	main(int argc, char const *argv[])//check empty //letters in process id
+int	main(int argc, char const *argv[])
 {
 	int	pid;
 	int	i;
 
 	if (argc != 3)
 		return (write(2, "Error\n", 6), 0);
+	if (pid_check(argv[1]) == 1)
+		return (write(2, "Error\n", 6), 1);
 	pid = ft_atoi(argv[1]);
 	if (pid < 100 || pid > MAX_PID)
 		return (write(2, "Error\n", 6), 0);

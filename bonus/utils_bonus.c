@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:22:22 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 14:01:14 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:16:45 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,13 @@ void	signal_handler_helper(unsigned char *buffer, pid_t client_pid,
 	buffer[1] = 0;
 	buffer[2] = 0;
 	buffer[3] = 0;
+}
+
+void	signal_handler(int signal)
+{
+	if (signal == SIGUSR1)
+	{
+		write(1, "Complete\n", 9);
+		exit(0);
+	}
 }
