@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 15:18:21 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 16:08:01 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	main(int argc, char *argv[])
 	pid = ft_atoi(argv[1]);
 	if (pid < 100 || pid > MAX_PID)
 		return (write(2, "Error\n", 6), 0);
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	signal_wraper(SIGUSR1, signal_handler);
+	signal_wraper(SIGUSR2, signal_handler);
 	i = 0;
 	while (argv[2][i])
 	{
@@ -110,7 +110,7 @@ int	main(int argc, char *argv[])
 	i = 0;
 	while (i < 8)
 	{
-		kill(pid, SIGUSR2);
+		kill_wrapper(pid, SIGUSR2);
 		i++;
 		usleep(200);
 	}

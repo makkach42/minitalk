@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 17:31:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 16:09:22 by makkach          ###   ########.fr       */
+/*   Created: 2025/03/08 16:08:09 by makkach           #+#    #+#             */
+/*   Updated: 2025/03/08 16:08:59 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+void	kill_wrapper(int pid, int signal)
+{
+	if (kill(pid, signal) == -1)
+		exit(1);
+}
 
-# define MAX_PID 99998
-
-void	kill_wrapper(int pid, int signal);
-void	sigaction_wraper(int sig, void *act, void *oldact);
-
-#endif
+void	sigaction_wraper(int sig, void *act, void *oldact)
+{
+	if (sigaction(sig, act, oldact) == -1)
+		exit(1);
+}

@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = mandatory/client.c
-SRC2 = mandatory/server.c
+SRC = mandatory/client.c mandatory/utils.c
+SRC2 = mandatory/server.c mandatory/utils.c
 SRC3 = bonus/client_bonus.c bonus/utils_bonus.c
 SRC4 = bonus/server_bonus.c bonus/utils_bonus.c
 OBJ = $(SRC:.c=.o)
