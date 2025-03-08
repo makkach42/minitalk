@@ -6,19 +6,11 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 20:31:14 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:36:11 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-static int	check(int sign)
-{
-	if (sign > 0)
-		return (-33);
-	else
-		return (-33);
-}
 
 static int	ft_atoi(const char *str)
 {
@@ -41,7 +33,7 @@ static int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (number > (((9223372036854775807) - (str[i] - '0')) / 10))
-			return (check(sign));
+			return (-1);
 		number = number * 10 + (str[i] - '0');
 		i++;
 	}
@@ -56,9 +48,9 @@ static void	sending_signal(char argv, int pid)
 	while (j < 8)
 	{
 		if (argv & 1 << j)
-			kill(pid, SIGUSR1);
+			kill_wrapper(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			kill_wrapper(pid, SIGUSR2);
 		(j)++;
 		usleep(800);
 	}

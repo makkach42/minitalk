@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:22:22 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 14:16:45 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:39:50 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	signal_handler_helper(unsigned char *buffer, pid_t client_pid,
 		int expected_bytes, int bit_count)
 {
 	if (buffer[0] == 0)
-		kill(client_pid, SIGUSR1);
+		kill_wrapper(client_pid, SIGUSR1);
 	else
 		write(1, buffer, expected_bytes);
 	bit_count = 0;
@@ -27,11 +27,8 @@ void	signal_handler_helper(unsigned char *buffer, pid_t client_pid,
 	buffer[3] = 0;
 }
 
-void	signal_handler(int signal)
+void	kill_wrapper(int pid, int signal)
 {
-	if (signal == SIGUSR1)
-	{
-		write(1, "Complete\n", 9);
-		exit(0);
-	}
+	if (kill(pid, signal) == -1)
+		exit(1);
 }

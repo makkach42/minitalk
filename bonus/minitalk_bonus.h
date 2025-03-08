@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:31:26 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 14:16:53 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:41:36 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 
 void	signal_handler_helper(unsigned char *buffer,
 			pid_t client_pid, int expected_bytes, int bit_count);
-void	signal_handler(int signal);
+void	kill_wrapper(int pid, int signal);
 
 #endif
