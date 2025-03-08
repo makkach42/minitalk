@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 14:40:09 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 15:05:44 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	sending_signal(char argv, int pid)
 		else
 			kill_wrapper(pid, SIGUSR2);
 		(j)++;
-		usleep(400);
+		usleep(200);
 	}
 }
 
@@ -110,6 +110,6 @@ int	main(int argc, char *argv[])
 	{
 		kill(pid, SIGUSR2);
 		i++;
-		usleep(400);
+		usleep(200);
 	}
 }
