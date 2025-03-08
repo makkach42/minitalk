@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/07 20:30:10 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:49:58 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static int	get_utf8_bytes(unsigned char first_byte)
 	return (1);
 }
 
-static void	reset_state(pid_t *client_pid, unsigned char *buffer, int *bit_count,
-					int *byte_index)
+static void	reset_state(pid_t *client_pid, unsigned char *buffer,
+			int *bit_count, int *byte_index)
 {
 	*client_pid = 0;
 	*bit_count = 0;
