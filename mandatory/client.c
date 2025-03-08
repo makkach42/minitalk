@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 15:02:47 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 15:17:31 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static int	pid_check(char *str)
 		i++;
 	if (str[i] == '\0')
 		return (1);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
 	while (str[i] == 32)
