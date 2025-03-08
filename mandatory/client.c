@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 14:36:11 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:52:36 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ static int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)number * sign);
+}
+
+void	kill_wrapper(int pid, int signal)
+{
+	if (kill(pid, signal) == -1)
+		exit(1);
 }
 
 static void	sending_signal(char argv, int pid)

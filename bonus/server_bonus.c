@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 14:49:58 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:54:27 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,13 @@ static void	signal_handler(int signal, siginfo_t *info, void *context)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
 
+	(void)argv;
+	if (argc != 1)
+		return (0);
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
 	sa.sa_sigaction = signal_handler;
