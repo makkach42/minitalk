@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/09 15:58:01 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/09 19:31:54 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_atoi(const char *str)
 	return ((int)number * sign);
 }
 
-void	signal_handler(int signal)
+static void	signal_handler(int signal)
 {
 	if (signal == SIGUSR1)
 	{
