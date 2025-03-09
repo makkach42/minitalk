@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:22:22 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 16:13:50 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:39:11 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sigaction_wraper(int sig, void *act, void *oldact)
 
 void	signal_wraper(int sig, void *act)
 {
-	if (signal(sig, act) == (void *)(int)-1)
+	if (signal(sig, act) == SIG_ERR)
 		exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/08 21:26:42 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:53:55 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	main(int argc, char **argv)
 	sa.sa_sigaction = signal_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset_wraper(&sa.sa_mask);
+	sigaddset_wraper(&sa.sa_mask, SIGUSR1);
+	sigaddset_wraper(&sa.sa_mask, SIGUSR2);
 	sigaction_wraper(SIGUSR1, &sa, NULL);
 	sigaction_wraper(SIGUSR2, &sa, NULL);
 	while (42)
