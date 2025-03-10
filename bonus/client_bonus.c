@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:23:02 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/09 19:37:33 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/10 17:36:56 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	main(int argc, char *argv[])
 	if (pid < 100 || pid > MAX_PID)
 		return (write(2, "Error\n", 6), 0);
 	signal_wraper(SIGUSR1, signal_handler);
-	signal_wraper(SIGUSR2, signal_handler);
 	i = 0;
 	while (argv[2][i])
 	{
