@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/09 13:53:55 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/11 08:22:10 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	sigaddset_wraper(&sa.sa_mask, SIGUSR2);
 	sigaction_wraper(SIGUSR1, &sa, NULL);
 	sigaction_wraper(SIGUSR2, &sa, NULL);
-	while (42)
+	while (1)
 	{
 		pause();
 	}
