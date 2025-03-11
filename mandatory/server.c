@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:22:54 by makkach           #+#    #+#             */
-/*   Updated: 2025/03/11 08:22:10 by makkach          ###   ########.fr       */
+/*   Updated: 2025/03/11 08:28:35 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ static void	signal_handler(int signal, siginfo_t *info, void *v)
 	bit_count++;
 	if (bit_count == 8)
 	{
-		if (current_char >= 0 && current_char <= 127)
-			write(1, &current_char, 1);
+		write(1, &current_char, 1);
 		current_char = 0;
 		bit_count = 0;
 	}
